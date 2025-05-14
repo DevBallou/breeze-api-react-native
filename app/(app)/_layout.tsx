@@ -79,7 +79,7 @@ const DrawerContent = (props: any) => {
           }}
           variant="outline"
         >
-          Logout
+          Déconnexion
         </Button>
       </View>
     </View>
@@ -88,6 +88,10 @@ const DrawerContent = (props: any) => {
 
 const HomeIcon = ({ size, color }: { size: number; color: string }) => {
   return <Icon name="home-outline" size={size} color={color} />;
+};
+
+const DriverIcon = ({ size, color }: { size: number; color: string }) => {
+  return <Icon name="drivers-license" size={size} color={color} />;
 };
 
 export default function AppLayout() {
@@ -106,8 +110,8 @@ export default function AppLayout() {
         <Drawer.Screen
           name="index"
           options={{
-            drawerLabel: 'Dashboard',
-            title: 'Dashboard',
+            drawerLabel: 'Accueil',
+            title: "Page d'accueil",
             drawerIcon: HomeIcon,
           }}
         />
@@ -119,13 +123,14 @@ export default function AppLayout() {
             drawerItemStyle: { display: 'none' },
           }}
         />
-        {/* <Drawer.Screen
-          name="book/[id]" // This is the name of the page and must match the url from root
+        <Drawer.Screen
+          name="chauffeur/[id]" // This is the name of the page and must match the url from root
           options={{
-            drawerLabel: "Books",
-            title: "overview",
+            drawerLabel: "Chauffeurs",
+            title: "Chauffeur",
+            drawerIcon: DriverIcon,
           }}
-        /> */}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );

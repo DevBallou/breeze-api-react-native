@@ -64,14 +64,14 @@ export default function Profile() {
       </View>
 
       <View style={tw`mb-4`}>
-        <Text style={tw`text-gray-600 mb-2`}>Name</Text>
+        <Text style={tw`text-gray-600 mb-2`}>Votre nom</Text>
         <Controller
           name="name"
           control={control}
           rules={{ required: 'Name is required' }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              placeholder="Enter your name"
+              placeholder="Entrer votre nom"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -82,19 +82,19 @@ export default function Profile() {
       </View>
 
       <View style={tw`mb-4`}>
-        <Text style={tw`text-gray-600 mb-2`}>Password</Text>
+        <Text style={tw`text-gray-600 mb-2`}>Mot de passe</Text>
         <Controller
           name="password"
           control={control}
           rules={{
             minLength: {
               value: 6,
-              message: 'Password must be at least 6 characters',
+              message: 'Le mot de passe doit comporter au moins 6 caractères',
             },
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              placeholder="Enter new password"
+              placeholder="Saisissez votre nouveau mot de passe"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value || ''}
@@ -113,11 +113,11 @@ export default function Profile() {
             validate: (value) =>
               /* eslint no-underscore-dangle: 0 */
               value === control._formValues.password ||
-              'Passwords do not match',
+              'Mots de passe sont différents',
           }}
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-              placeholder="Confirm new password"
+              placeholder="Confirmer nouveau mot de passe"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value || ''}
@@ -129,7 +129,7 @@ export default function Profile() {
       </View>
 
       <Button disabled={userUpdate.isPending} onPress={handleSubmit(onSubmit)}>
-        Save Changes
+        Sauvegarder les modifications
       </Button>
     </View>
   );
