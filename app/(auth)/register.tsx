@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import type { SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import tw from 'twrnc';
 
 import { TextInput } from '@/components/form/text-input';
@@ -45,8 +45,9 @@ export default function Register() {
 
   return (
     <View style={tw`flex-1 w-full items-center justify-center bg-gray-100`}>
+      <Image source={require('../../assets/images/logo_stcr.png')} style={tw`w-[100px] h-[100px] self-center mb-10`} />
       <View style={tw`px-4 w-full max-w-sm`}>
-        <Text style={tw`text-4xl font-bold mb-6 text-gray-900`}>Register</Text>
+        <Text style={tw`text-4xl font-bold mb-6 text-gray-900`}>Inscrire</Text>
 
         <View style={tw`flex flex-col gap-4 mb-4`}>
           <Controller
@@ -58,7 +59,7 @@ export default function Register() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 autoCapitalize="none"
-                placeholder="Name"
+                placeholder="Votre nom"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 value={value}
@@ -78,7 +79,7 @@ export default function Register() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 autoCapitalize="none"
-                placeholder="Email Address"
+                placeholder="Adresse E-mail"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 keyboardType="email-address"
@@ -99,7 +100,7 @@ export default function Register() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 autoCapitalize="none"
-                placeholder="Password"
+                placeholder="Mot de passe"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 secureTextEntry
@@ -121,7 +122,7 @@ export default function Register() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 autoCapitalize="none"
-                placeholder="Confirm Password"
+                placeholder="Confirmer le mot de passe"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 secureTextEntry
@@ -143,7 +144,7 @@ export default function Register() {
 
         <Pressable onPress={() => router.push('/login')}>
           <Text style={tw`text-gray-900 text-xs text-center mt-8`}>
-            Already have an account? <Text style={tw`font-bold`}>Login</Text>
+            Avez déjà un compte ? <Text style={tw`font-bold`}>Login</Text>
           </Text>
         </Pressable>
       </View>

@@ -36,7 +36,7 @@ const UserProfile = () => {
         />
         <View style={tw`flex flex-col`}>
           <Text style={tw`text-sm font-medium`}>{user?.name}</Text>
-          <Text style={tw`text-xs text-gray-500`}>View Profile</Text>
+          <Text style={tw`text-xs text-gray-500`}>Voir le profil</Text>
         </View>
       </Pressable>
       <Icon name="chevron-forward" size={20} />
@@ -79,7 +79,7 @@ const DrawerContent = (props: any) => {
           }}
           variant="outline"
         >
-          Logout
+          Déconnexion
         </Button>
       </View>
     </View>
@@ -88,6 +88,14 @@ const DrawerContent = (props: any) => {
 
 const HomeIcon = ({ size, color }: { size: number; color: string }) => {
   return <Icon name="home-outline" size={size} color={color} />;
+};
+
+const DriverIcon = ({ size, color }: { size: number; color: string }) => {
+  return <Icon name="accessibility-outline" size={size} color={color} />;
+};
+
+const VehicleIcon = ({ size, color }: { size: number; color: string }) => {
+  return <Icon name="car-outline" size={size} color={color} />;
 };
 
 export default function AppLayout() {
@@ -106,26 +114,35 @@ export default function AppLayout() {
         <Drawer.Screen
           name="index"
           options={{
-            drawerLabel: 'Dashboard',
-            title: 'Dashboard',
+            drawerLabel: 'Accueil',
+            title: "Page d'accueil",
             drawerIcon: HomeIcon,
           }}
         />
         <Drawer.Screen
           name="profile"
           options={{
-            drawerLabel: 'Profile',
-            title: 'Profile',
+            drawerLabel: 'Profil',
+            title: 'Profil',
             drawerItemStyle: { display: 'none' },
           }}
         />
-        {/* <Drawer.Screen
-          name="book/[id]" // This is the name of the page and must match the url from root
+        <Drawer.Screen
+          name="chauffeurs" // This is the name of the page and must match the url from root
           options={{
-            drawerLabel: "Books",
-            title: "overview",
+            drawerLabel: "Chauffeurs",
+            title: "Les informations Chauffeur",
+            drawerIcon: DriverIcon,
           }}
-        /> */}
+        />
+        <Drawer.Screen
+          name="vehicules" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Vehicules",
+            title: "Les informations Vehicule",
+            drawerIcon: VehicleIcon,
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );

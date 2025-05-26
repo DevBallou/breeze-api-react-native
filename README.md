@@ -62,6 +62,42 @@ While designed to work perfectly with Laravel-based backends, this starter kit c
 3. Configure your environment variables in `constants/config.ts`
 4. Run the development server: `npm run start`
 
+## 📂 Project Structure
+
+```bash
+.
+├── app/                 # Entry point folders for Expo Router
+│   ├── (app)/           # Main app screens
+│   └── (auth)/          # Authentication screens (Login, Register, Forgot Password)
+│
+├── assets/
+│   └── images/          # Static image assets (e.g., logos, backgrounds)
+│
+├── components/          # Reusable UI and form components
+│   ├── form/            # Form input components (TextInput, Button, etc.)
+│   └── ui/              # UI components like cards, modals, etc.
+│
+├── constants/
+│   └── config/          # Configuration files (e.g., API base URL, app settings)
+│
+├── context/             # Global state using React Context
+│   ├── session/         # Auth session handling (tokens, user info)
+│   └── toast/           # Toast notifications context
+│
+├── features/            # Feature-based architecture
+│   ├── auth/            # Auth-related hooks, queries, components
+│   ├── chauffeur/       # Chauffeur-related hooks, queries, components
+│   └── profile/         # User profile-related logic
+│
+├── hooks/               # Custom React hooks
+│   └── useStorageState/ # Secure storage state management
+│
+└── utils/               # Utility functions
+    ├── helpers.ts       # Common helper functions
+    └── http.ts          # API request wrapper (e.g., Ky or Axios config)
+
+```
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/lucky-media/react-native-breeze/issues).

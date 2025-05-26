@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import type { SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import tw from 'twrnc';
 
 import { TextInput } from '@/components/form/text-input';
@@ -45,6 +45,7 @@ export default function Login() {
 
   return (
     <View style={tw`flex-1 w-full items-center justify-center bg-gray-100`}>
+      <Image source={require('../../assets/images/logo_stcr.png')} style={tw`w-[100px] h-[100px] self-center mb-10`} />
       <View style={tw`px-4 w-full max-w-sm`}>
         <Text style={tw`text-4xl font-bold mb-6 text-gray-900`}>Login</Text>
 
@@ -58,7 +59,7 @@ export default function Login() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 autoCapitalize="none"
-                placeholder="Email Address"
+                placeholder="Adresse E-mail"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 keyboardType="email-address"
@@ -79,7 +80,7 @@ export default function Login() {
             render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 autoCapitalize="none"
-                placeholder="Password"
+                placeholder="Mot de passe"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 secureTextEntry
@@ -102,12 +103,12 @@ export default function Login() {
         <View style={tw`flex flex-col items-center mt-8 gap-2`}>
           <Pressable onPress={() => router.push('/register')}>
             <Text style={tw`text-gray-900 text-xs`}>
-              Don&apos;t have an account?{' '}
-              <Text style={tw`font-bold`}>Sign up</Text>
+              Vous n&apos;avez pas de compte?{' '}
+              <Text style={tw`font-bold`}>Inscrivez-vous</Text>
             </Text>
           </Pressable>
           <Pressable onPress={() => router.push('/forgot-password')}>
-            <Text style={tw`text-gray-900 text-xs`}>Forgot your password?</Text>
+            <Text style={tw`text-gray-900 text-xs`}>Mot de passe oublié?</Text>
           </Pressable>
         </View>
       </View>

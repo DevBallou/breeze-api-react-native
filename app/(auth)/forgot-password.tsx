@@ -2,7 +2,7 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import type { SubmitHandler } from 'react-hook-form';
 import { Controller, useForm } from 'react-hook-form';
-import { Pressable, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 import tw from 'twrnc';
 
 import { TextInput } from '@/components/form/text-input';
@@ -43,6 +43,7 @@ export default function Login() {
 
   return (
     <View style={tw`flex-1 w-full items-center justify-center bg-gray-100`}>
+      <Image source={require('../../assets/images/logo_stcr.png')} style={tw`w-[100px] h-[100px] self-center mb-10`} />
       <View style={tw`px-4 w-full max-w-sm`}>
         <Text style={tw`text-4xl font-bold mb-2 text-gray-900`}>
           Forgot Password ?
