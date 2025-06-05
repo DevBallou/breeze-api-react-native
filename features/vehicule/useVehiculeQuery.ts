@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-
 import { useSession } from '@/context/session';
 import http from '@/utils/http';
 
@@ -16,28 +15,28 @@ export interface Vehicule {
     active: boolean;
 }
 
-/**
- * Custom hook to fetch and cache chauffeur data.
- *
- * The Chauffeur data is set to stay in cache indefinitely (staleTime: Infinity) because:
- * 1. Chauffeur information rarely changes during a session.
- * 2. It reduces unnecessary network requests, improving performance.
- * 3. It ensures consistent chauffeur data across the app without frequent refetches.
- * 4. Any updates to chauffeur data should be manually invalidated after successful mutations.
- */
-export const useVehiculeQuery = () => {
+interface VehiculeApiResponse {
+    data: Vehicule[];
+    meta: {
+        current_page: number;
+        last_page: number;
+        total: number;
+    };
+}
+
+export const useVehiculeQuery = ({ page }: { page: number }) => {
     const { session } = useSession();
 
-    return useQuery<Vehicule[], Error>({
-        queryKey: ['vehicules'],
+    return useQuery<VehiculeApiResponse, Error>({
+        queryKey: ['vehicules', page],
         queryFn: () =>
             http
-                .get('vehicules', {
+                .get(`vehicules?page=${page}`, {
                     headers: {
                         Authorization: `Bearer ${session?.token}`,
                     },
                 })
-                .json<Vehicule[]>(),
-        staleTime: Infinity,
+                .json<VehiculeApiResponse>(),
+        keepPreviousData: true,
     });
 };
